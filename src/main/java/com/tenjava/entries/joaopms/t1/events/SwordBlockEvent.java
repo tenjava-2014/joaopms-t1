@@ -22,6 +22,9 @@ public class SwordBlockEvent implements Listener {
         if (!(action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK))
             return;
 
+        if (!(material == Material.WOOD_SWORD || material == Material.STONE_SWORD || material == Material.GOLD_SWORD || material == Material.IRON_SWORD || material == Material.DIAMOND_SWORD))
+            return;
+
         TenJava.log(Level.INFO, "Blocking!");
     }
 }
