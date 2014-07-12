@@ -10,6 +10,15 @@ public class UpgradeManager {
     private static List<Upgrade> upgrades = new ArrayList<>();
 
     /**
+     * Gets the upgrades
+     *
+     * @return Upgrade list
+     */
+    public static List<Upgrade> getUpgrades() {
+        return upgrades;
+    }
+
+    /**
      * Registers an upgrade
      *
      * @param upgrade Upgrade to register

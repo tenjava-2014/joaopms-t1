@@ -70,7 +70,7 @@ public class UpgradeCraftEvent implements Listener {
         upgradeName = upgradeName.trim();
 
         if (!UpgradeManager.doesUpgradeExist(upgradeName)) {
-            player.sendMessage("§cThat upgrade doesn't exist! Do §4/vupgrades list §cto see what upgrades are available!");
+            player.sendMessage("§cThat upgrade doesn't exist! Do §4/vupgrades §cto see what upgrades are available!");
             player.playSound(player.getLocation(), Sound.DONKEY_ANGRY, 1F, 1F);
             event.setCancelled(true);
         }

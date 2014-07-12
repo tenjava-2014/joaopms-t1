@@ -1,3 +1,7 @@
 name: joaopms-t1
 main: com.tenjava.entries.joaopms.t1.TenJava
 version: '${project.version}'
+
+commands:
+  vupgrades:
+    description: Need help with vehicle upgrades?

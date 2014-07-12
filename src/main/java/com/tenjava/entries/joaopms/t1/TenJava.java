@@ -1,5 +1,6 @@
 package com.tenjava.entries.joaopms.t1;
 
+import com.tenjava.entries.joaopms.t1.command.UpgradeCommand;
 import com.tenjava.entries.joaopms.t1.event.UpgradeCraftEvent;
 import com.tenjava.entries.joaopms.t1.event.VehicleUpgradeEvent;
 import com.tenjava.entries.joaopms.t1.upgrade.Upgrade;
@@ -38,7 +39,6 @@ public class TenJava extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // TODO "/vupgrades" command
         plugin = this;
 
         // Register: Events
@@ -49,5 +49,8 @@ public class TenJava extends JavaPlugin {
         Map<Material, Integer> testUpgrade = new HashMap<Material, Integer>();
         testUpgrade.put(Material.APPLE, 5);
         UpgradeManager.registerUpgrade(new Upgrade("Test", UpgradeType.SPEED, 1, testUpgrade));
+
+        //Register: Command Executors
+        Bukkit.getPluginCommand("vupgrades").setExecutor(new UpgradeCommand());
     }
 }
