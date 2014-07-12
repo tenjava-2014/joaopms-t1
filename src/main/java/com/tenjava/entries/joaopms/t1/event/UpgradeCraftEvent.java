@@ -55,8 +55,6 @@ public class UpgradeCraftEvent implements Listener {
             validChestItems.add(chestContents[i]);
         }
 
-
-
         event.setCancelled(true);
         System.out.println("random thing goes here");
     }

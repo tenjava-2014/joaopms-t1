@@ -4,7 +4,7 @@ import org.bukkit.Material;
 
 import java.util.Map;
 
-public abstract class Upgrade {
+public class Upgrade {
     private String upgradeName;
     private UpgradeType upgradeType;
     private int upgradeLevel;
@@ -22,7 +22,7 @@ public abstract class Upgrade {
      *
      * @return Map with the materials and their quantity
      */
-    public Map<Material, Integer> getUpgradeMaterials() {
+    public Map<Material, Integer> getMaterials() {
         return upgradeMaterials;
     }
 
@@ -31,7 +31,7 @@ public abstract class Upgrade {
      *
      * @return Upgrade name
      */
-    public String getUpgradeName() {
+    public String getName() {
         return upgradeName;
     }
 
@@ -40,7 +40,7 @@ public abstract class Upgrade {
      *
      * @return Upgrade type
      */
-    public UpgradeType getUpgradeType() {
+    public UpgradeType getType() {
         return upgradeType;
     }
 
@@ -49,7 +49,7 @@ public abstract class Upgrade {
      *
      * @return Upgrade level
      */
-    public int getUpgradeLevel() {
+    public int getLevel() {
         return upgradeLevel;
     }
 }
