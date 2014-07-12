@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -56,13 +57,22 @@ public class UpgradeManager {
         }
 
         Map<Material, Integer> upgradeMaterials = upgrade.getMaterials();
+        Map<Material, Boolean> existingMaterials = new HashMap<>();
+
+        for (Material material : upgradeMaterials.keySet())
+            existingMaterials.put(material, false);
+
         for (ItemStack itemStack : craftItems) {
             Material itemMaterial = itemStack.getType();
             Integer itemQuantity = itemStack.getAmount();
 
             if (upgradeMaterials.containsKey(itemMaterial) && upgradeMaterials.get(itemMaterial) == itemQuantity)
-                System.out.println("true :D");
+                existingMaterials.put(itemMaterial, true);
         }
+
+        for (boolean taken : existingMaterials.values())
+            if (!taken)
+                return false;
 
         return true;
     }

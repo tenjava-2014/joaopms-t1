@@ -48,6 +48,7 @@ public class TenJava extends JavaPlugin {
         // Register: Upgrades
         Map<Material, Integer> testUpgrade = new HashMap<Material, Integer>();
         testUpgrade.put(Material.APPLE, 5);
+        testUpgrade.put(Material.GOLD_INGOT, 10);
         UpgradeManager.registerUpgrade(new Upgrade("Test", UpgradeType.SPEED, 1, testUpgrade));
 
         //Register: Command Executors

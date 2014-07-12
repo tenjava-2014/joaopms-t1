@@ -1,6 +1,5 @@
 package com.tenjava.entries.joaopms.t1.event;
 
-import com.tenjava.entries.joaopms.t1.upgrade.Upgrade;
 import com.tenjava.entries.joaopms.t1.upgrade.UpgradeManager;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -127,7 +126,7 @@ public class UpgradeCraftEvent implements Listener {
         String upgradeName = chestName.replace("vehicle upgrade:", "");
         upgradeName = upgradeName.trim();
 
-        UpgradeManager.canCraftUpgrade(upgradeName, validChestItems);
+        System.out.println(UpgradeManager.canCraftUpgrade(upgradeName, validChestItems));
 
         event.setCancelled(true);
         System.out.println("random thing goes here");
