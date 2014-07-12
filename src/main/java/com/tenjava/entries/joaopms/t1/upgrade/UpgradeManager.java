@@ -1,9 +1,12 @@
 package com.tenjava.entries.joaopms.t1.upgrade;
 
 import com.tenjava.entries.joaopms.t1.TenJava;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 
 public class UpgradeManager {
@@ -40,5 +43,27 @@ public class UpgradeManager {
                 return true;
 
         return false;
+    }
+
+    public static boolean canCraftUpgrade(String upgradeName, List<ItemStack> craftItems) {
+        Upgrade upgrade = null;
+
+        for (Upgrade u : upgrades) {
+            if (u.getName().equalsIgnoreCase(upgradeName)) {
+                upgrade = u;
+                break;
+            }
+        }
+
+        Map<Material, Integer> upgradeMaterials = upgrade.getMaterials();
+        for (ItemStack itemStack : craftItems) {
+            Material itemMaterial = itemStack.getType();
+            Integer itemQuantity = itemStack.getAmount();
+
+            if (upgradeMaterials.containsKey(itemMaterial) && upgradeMaterials.get(itemMaterial) == itemQuantity)
+                System.out.println("true :D");
+        }
+
+        return true;
     }
 }
