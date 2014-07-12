@@ -6,7 +6,11 @@ import org.bukkit.block.Chest;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.AnvilInventory;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -14,6 +18,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UpgradeCraftEvent implements Listener {
+    @EventHandler
+    public void anvilName(InventoryClickEvent event) {
+        Inventory inventory = event.getInventory();
+        // Checks if we are working with an anvil
+        if (!(inventory instanceof AnvilInventory))
+            return;
+
+        InventoryView inventoryView = event.getView();
+        int rawSlot = event.getRawSlot();
+        // Checks if the raw slot is the same as the inventory view
+        if (rawSlot != inventoryView.convertSlot(rawSlot))
+            return;
+
+        /*
+            Checks if the raw slot is 2
+
+            Slot 0 = Left Item
+            Slot 1 = Right Item
+            Slot 2 = Final Item
+         */
+        if (rawSlot != 2)
+            return;
+
+        // Gets the result item
+        ItemStack item = event.getCurrentItem();
+
+        // Checks if the item is null
+        if (item == null || item.getType() == Material.AIR)
+            return;
+
+        ItemMeta itemMeta = item.getItemMeta();
+        String itemName = itemMeta.getDisplayName();
+
+        // Checks if the item's name is null
+        if (itemName == null)
+            return;
+
+        // Lower case the item's name
+        itemName = itemName.toLowerCase();
+
+        if (!itemName.startsWith("vehicle upgrade:"))
+            return;
+
+        String upgradeName = itemName.replace("vehicle upgrade:", "");
+        upgradeName = upgradeName.trim();
+
+        System.out.println(upgradeName);
+        System.out.println("It's working!");
+    }
+
     @EventHandler
     public void chestClick(PlayerInteractEvent event) {
         Action action = event.getAction();
