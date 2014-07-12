@@ -1,8 +1,11 @@
 package com.tenjava.entries.joaopms.t1.event;
 
+import com.tenjava.entries.joaopms.t1.upgrade.UpgradeManager;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.Chest;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -20,6 +23,8 @@ import java.util.List;
 public class UpgradeCraftEvent implements Listener {
     @EventHandler
     public void anvilName(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+
         Inventory inventory = event.getInventory();
         // Checks if we are working with an anvil
         if (!(inventory instanceof AnvilInventory))
@@ -64,8 +69,11 @@ public class UpgradeCraftEvent implements Listener {
         String upgradeName = itemName.replace("vehicle upgrade:", "");
         upgradeName = upgradeName.trim();
 
-        System.out.println(upgradeName);
-        System.out.println("It's working!");
+        if (!UpgradeManager.doesUpgradeExist(upgradeName)) {
+            player.sendMessage("§cThat upgrade doesn't exist! Do §4/vupgrades list §cto see what upgrades are available!");
+            player.playSound(player.getLocation(), Sound.DONKEY_ANGRY, 1F, 1F);
+            event.setCancelled(true);
+        }
     }
 
     @EventHandler

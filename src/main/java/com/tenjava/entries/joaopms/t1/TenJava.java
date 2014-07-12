@@ -38,6 +38,7 @@ public class TenJava extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        // TODO "/vupgrades" command
         plugin = this;
 
         // Register: Events
