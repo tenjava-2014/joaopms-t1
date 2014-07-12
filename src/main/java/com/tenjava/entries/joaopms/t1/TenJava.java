@@ -1,6 +1,6 @@
 package com.tenjava.entries.joaopms.t1;
 
-import com.tenjava.entries.joaopms.t1.events.SwordBlockEvent;
+import com.tenjava.entries.joaopms.t1.event.SwordBlockEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
