@@ -1,7 +1,5 @@
 package com.tenjava.entries.joaopms.t1;
 
-import com.tenjava.entries.joaopms.t1.event.SwordBlockEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,9 +11,6 @@ public class TenJava extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-
-        //Register: Events
-        Bukkit.getPluginManager().registerEvents(new SwordBlockEvent(), plugin);
     }
 
     /**
