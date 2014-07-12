@@ -31,5 +31,14 @@ Usage
 1. Install plugin
 2. Do things with it
 
+---------------------------------------
+
+Why did you give up?
+--------------------
+
+While being fun at the start, I started to loose my motivation to keep coding this plugin. After some breaks to think about the future of the plugin and coming back to it, I finally lost all of my motivation.
+Since I'm not having fun, I decided to stop working on this project. Maybe it's the theme, maybe it's me, I don't really know.
+I just want to thank everyone involved on this great project and the opportunity they gave me. Also, good luck to every participant and don't give up like me!
+
 <!-- Hi, joaopms! This is the default README for every ten.java submission. -->
 <!-- We encourage you to edit this README with some information about your submission – keep in mind you'll be scored on documentation! -->

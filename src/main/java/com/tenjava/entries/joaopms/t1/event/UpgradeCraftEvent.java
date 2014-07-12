@@ -1,6 +1,7 @@
 package com.tenjava.entries.joaopms.t1.event;
 
 import com.tenjava.entries.joaopms.t1.upgrade.UpgradeManager;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -85,6 +86,7 @@ public class UpgradeCraftEvent implements Listener {
 
     @EventHandler
     public void chestClick(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
         Action action = event.getAction();
         Block block = event.getClickedBlock();
         // Checks if the action is the one we want and the block is a chest
@@ -135,10 +137,20 @@ public class UpgradeCraftEvent implements Listener {
         // Removes unnecessary spaces
         upgradeName = upgradeName.trim();
 
-        System.out.println(UpgradeManager.canCraftUpgrade(upgradeName, validChestItems));
-
         // Cancel the event
         event.setCancelled(true);
+
+        // Checks if the upgrade can be crafted
+        if (!UpgradeManager.canCraftUpgrade(upgradeName, validChestItems)) {
+            return;
+        }
+
+        Location blockLocation = block.getLocation();
+        for (int i = 0; i < 4; i++)
+            block.getWorld().strikeLightningEffect(blockLocation);
+        chest.getBlockInventory().clear();
+
+        block.breakNaturally();
         System.out.println("random thing goes here");
     }
 }
