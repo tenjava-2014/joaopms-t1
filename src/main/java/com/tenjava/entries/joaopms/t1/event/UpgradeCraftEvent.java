@@ -63,15 +63,22 @@ public class UpgradeCraftEvent implements Listener {
         // Lower case the item's name
         itemName = itemName.toLowerCase();
 
+        // Checks if the item's name starts with "vehicle upgrade:"
         if (!itemName.startsWith("vehicle upgrade:"))
             return;
 
+        // Removes the chest prefix
         String upgradeName = itemName.replace("vehicle upgrade:", "");
+        // Removes unnecessary spaces
         upgradeName = upgradeName.trim();
 
+        // Checks if the upgrade exists
         if (!UpgradeManager.doesUpgradeExist(upgradeName)) {
+            // Send an error message to the player
             player.sendMessage("§cThat upgrade doesn't exist! Do §4/vupgrades §cto see what upgrades are available!");
+            // Play a sound to the player
             player.playSound(player.getLocation(), Sound.DONKEY_ANGRY, 1F, 1F);
+            // Cancel the event
             event.setCancelled(true);
         }
     }
@@ -123,11 +130,14 @@ public class UpgradeCraftEvent implements Listener {
             validChestItems.add(chestContents[i]);
         }
 
+        // Removes the chest prefix
         String upgradeName = chestName.replace("vehicle upgrade:", "");
+        // Removes unnecessary spaces
         upgradeName = upgradeName.trim();
 
         System.out.println(UpgradeManager.canCraftUpgrade(upgradeName, validChestItems));
 
+        // Cancel the event
         event.setCancelled(true);
         System.out.println("random thing goes here");
     }

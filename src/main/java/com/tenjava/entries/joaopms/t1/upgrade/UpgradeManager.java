@@ -46,17 +46,32 @@ public class UpgradeManager {
         return false;
     }
 
+    /**
+     * Gets if the upgrade can be crafted
+     *
+     * @param upgradeName The upgrade name
+     * @param craftItems  The items allowed to craft
+     * @return Can the upgrade be crafted?
+     */
     public static boolean canCraftUpgrade(String upgradeName, List<ItemStack> craftItems) {
         Upgrade upgrade = null;
 
+        // Loops through all of the upgrades
         for (Upgrade u : upgrades) {
+            // Checks if the upgrade's name equals to the provided upgrade's name
             if (u.getName().equalsIgnoreCase(upgradeName)) {
+                // Set the upgrade
                 upgrade = u;
                 break;
             }
         }
 
         Map<Material, Integer> upgradeMaterials = upgrade.getMaterials();
+
+        // Checks if the chest's items are more than needed
+        if (craftItems.size() > upgradeMaterials.size())
+            return false;
+
         Map<Material, Boolean> existingMaterials = new HashMap<>();
 
         for (Material material : upgradeMaterials.keySet())
