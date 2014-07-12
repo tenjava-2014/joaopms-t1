@@ -1,6 +1,7 @@
 package com.tenjava.entries.joaopms.t1;
 
-import com.tenjava.entries.joaopms.t1.event.VehicleUpgradeClick;
+import com.tenjava.entries.joaopms.t1.event.UpgradeCraftEvent;
+import com.tenjava.entries.joaopms.t1.event.VehicleUpgradeEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -34,6 +35,7 @@ public class TenJava extends JavaPlugin {
         plugin = this;
 
         // Register: Events
-        Bukkit.getPluginManager().registerEvents(new VehicleUpgradeClick(), plugin);
+        Bukkit.getPluginManager().registerEvents(new VehicleUpgradeEvent(), plugin);
+        Bukkit.getPluginManager().registerEvents(new UpgradeCraftEvent(), plugin);
     }
 }

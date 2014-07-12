@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.vehicle.VehicleDamageEvent;
 
-public class VehicleUpgradeClick implements Listener {
+public class VehicleUpgradeEvent implements Listener {
     @EventHandler
     public void vehicleDamageEvent(VehicleDamageEvent event) {
         // Check if the attacker is a player
