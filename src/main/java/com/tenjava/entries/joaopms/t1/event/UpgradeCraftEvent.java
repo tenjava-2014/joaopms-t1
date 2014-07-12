@@ -10,6 +10,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UpgradeCraftEvent implements Listener {
     @EventHandler
     public void chestClick(PlayerInteractEvent event) {
@@ -41,15 +44,18 @@ public class UpgradeCraftEvent implements Listener {
 
         Chest chest = (Chest) block.getState();
         ItemStack[] chestContents = chest.getBlockInventory().getContents();
+        List<ItemStack> validChestItems = new ArrayList<>();
 
         for (int i = 0; i < chestContents.length; i++) {
             // Checks if the item is null
             if (chestContents[i] == null)
                 continue;
 
-            ItemStack chestItem = chestContents[i];
-            System.out.println(chestItem.getType());
+            // Adds the item to the valid chest items list
+            validChestItems.add(chestContents[i]);
         }
+
+
 
         event.setCancelled(true);
         System.out.println("random thing goes here");
